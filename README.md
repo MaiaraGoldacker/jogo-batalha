@@ -61,22 +61,26 @@ Conectar-se ao DB com o manager de sua preferência. O usuário e senha do DB po
 A documentação da API é feita através do swagger, e quando a aplicação estiver rodando em ambiente local você pode acessá-la pelo [link](http://localhost:8080/swagger-ui/index.html#/)
 
 ### 🎲 Iniciando um novo jogo
-1 -Para jogar, é necessário adicionar um novo usuário através do endpoint /usuarios, informando no body um usuário e senha
+1 -Para jogar, é necessário adicionar um novo usuário através do endpoint POST /usuarios, informando no body um usuário e senha
 ![image](https://user-images.githubusercontent.com/29411848/183426414-957e5c81-09fb-484c-bc38-7999ddc78a5b.png)
 
-2 - Em seguida, consultar o endpoint /login para gerar um token para o login
+2 - Em seguida, consultar o endpoint POST /login para gerar um token para o login
 ![image](https://user-images.githubusercontent.com/29411848/183426970-6c39b92c-21ca-4763-844e-8e7d31c258dc.png)
 
 3 - Pegar o token gerado, e adicionar a palavra Bearer + token no Authorize para acessar os demais endpoints no swagger
 ![image](https://user-images.githubusercontent.com/29411848/183427396-3111e1db-f4e1-433d-8ba8-86e3df3887d2.png)
 
-4 -Para iniciar Partida, acessar o endpoint /partidas/iniciar passando como parâmetro o nome de usuário pelos Parameters
+4 -Para iniciar Partida, acessar o endpoint POST /partidas/iniciar
 ![image](https://user-images.githubusercontent.com/29411848/183427789-b5e95739-66fc-4d8b-98b6-1c8a47a9242c.png)
 
-5 -Após a partida estar criada, acessar os endpoints GET /round para pegar as opções de filmes para o round atual, passando como parâmetro o nome de usuário pelos Parameters
-![image](https://user-images.githubusercontent.com/29411848/183428133-7372b978-fa7d-44b5-89f8-74263bcc7c63.png)
+5 -Após a partida estar criada, acessar os endpoints GET /round para pegar as opções de filmes para o round atual
+![image](https://user-images.githubusercontent.com/29411848/183428993-c0eb2f9a-11aa-4903-b86b-7e4dcef4f165.png)
 
+6 -Utilizar o campo opcaoId retornado no payload do GET do passo 5 para adicionar no payload POST /rounds do filme em que o jogador acha que possui maior pontuação
+![image](https://user-images.githubusercontent.com/29411848/183428918-c347f755-1c0a-49f2-aa7a-458bf2a48016.png)
 
+Obs: Você Pode consultar sua colocação no ranking a qualquer momento, através do endpoint GET /ranking
+![image](https://user-images.githubusercontent.com/29411848/183429366-d3f5ebf2-c290-41ab-8db4-cc4f2ed6e878.png)
 
 
 ### 🛠 Tecnologias
