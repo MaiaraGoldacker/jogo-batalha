@@ -20,6 +20,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jogo.request.UsuarioRequest;
 import com.jogo.service.PartidaService;
+import com.jogo.config.PostgresContainer;
 
 
 @ActiveProfiles(profiles = "test")
@@ -29,7 +30,7 @@ import com.jogo.service.PartidaService;
 public class PartidaControllerIT {
 	
 	@Container
-	private static final com.jogo.config.PostgresContainer POSTGRES_CONTAINER = com.jogo.config.PostgresContainer.getInstance();
+	private static final PostgresContainer POSTGRES_CONTAINER = PostgresContainer.getInstance();
 
 	@Autowired
 	private MockMvc mockMvc;

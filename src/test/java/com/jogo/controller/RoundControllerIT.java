@@ -30,6 +30,7 @@ import com.jogo.request.EscolhaRequest;
 import com.jogo.request.UsuarioRequest;
 import com.jogo.response.SearchOmdbApiSimple.SearchOmdbApiFull;
 import com.github.jenspiegsa.wiremockextension.Managed;
+import com.jogo.config.PostgresContainer;
 
 @ActiveProfiles(profiles = "test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -38,7 +39,7 @@ import com.github.jenspiegsa.wiremockextension.Managed;
 public class RoundControllerIT {
 
 	@Container
-	private static final com.jogo.config.PostgresContainer POSTGRES_CONTAINER = com.jogo.config.PostgresContainer.getInstance();
+	private static final PostgresContainer POSTGRES_CONTAINER = PostgresContainer.getInstance();
 
 	@Autowired
 	private MockMvc mockMvc;
