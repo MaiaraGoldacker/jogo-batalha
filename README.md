@@ -21,17 +21,18 @@ Jogo de Batalha de filmes, onde o jogador receberá duas opções de filmes, e t
 - [x] Ranking:
   - [x] Consultar ranking com pontuação total dos jogadores;
 
-### ✏️ Técnologias Utilizadas
+### 🛠 Técnologias e padrão utilizadas
 
-- Spring Security
-- Spring Data
-- Java 11
-- Maven
-- Docker
-- Flyway
-- Postgres
-- Lombok
-- Swagger
+- Arquitetura padrão MVC;
+- Spring Security;
+- Spring Data;
+- Java 11;
+- Maven;
+- Docker;
+- Flyway;
+- Postgres;
+- Lombok;
+- Swagger;
 
 ### 🧭 Rodando a aplicação
 
@@ -60,6 +61,12 @@ Conectar-se ao DB com o manager de sua preferência. O usuário e senha do DB po
 #### Documentação da API
 A documentação da API é feita através do swagger, e quando a aplicação estiver rodando em ambiente local você pode acessá-la pelo [link](http://localhost:8080/swagger-ui/index.html#/)
 
+### 💡 Regras de negócio implementadas
+
+  - cada partida se encerrará quando o jogador alcançar um número maximo de erros. Esse número pode ser setado através da variável de ambiente VALOR-MAXIMO-ERROS, que  é inicializada com o default de 3;
+  - cada novo round haverá opções de filmes, e o jogador terá de escolher entre eles qual possui a maior pontuação. A quantidade de filmes por round pode ser mudada através da variável de ambiente QUANTIDADE-FILMES-POR-ROUND, que  é inicializada com o default de 2;
+  -O jogador pode deslogar ou sair do jogo a qualquer momento, mas quando ele voltar, a mesma partida e round(se houver um round que não foi respondido) será resgatado;
+
 ### 🎲 Iniciando um novo jogo
 1 -Para jogar, é necessário adicionar um novo usuário através do endpoint POST /usuarios, informando no body um usuário e senha
 ![image](https://user-images.githubusercontent.com/29411848/183426414-957e5c81-09fb-484c-bc38-7999ddc78a5b.png)
@@ -76,7 +83,8 @@ A documentação da API é feita através do swagger, e quando a aplicação est
 5 -Após a partida estar criada, acessar os endpoints GET /round para pegar as opções de filmes para o round atual
 ![image](https://user-images.githubusercontent.com/29411848/183428993-c0eb2f9a-11aa-4903-b86b-7e4dcef4f165.png)
 
-6 -Utilizar o campo opcaoId retornado no payload do GET do passo 5 para adicionar no payload POST /rounds do filme em que o jogador acha que possui maior pontuação
+6 -Utilizar o campo opcaoId retornado no payload do GET do passo 5 para adicionar no payload POST /rounds do filme em que o jogador acha que possui maior pontuação.
+Esse endpoint retrornará no corpo se o Jogador errou ou acertou o palpite.
 ![image](https://user-images.githubusercontent.com/29411848/183428918-c347f755-1c0a-49f2-aa7a-458bf2a48016.png)
 
 Obs: Você Pode consultar sua colocação no ranking a qualquer momento, através do endpoint GET /ranking
@@ -86,9 +94,5 @@ Obs: Você Pode consultar sua colocação no ranking a qualquer momento, atravé
 ### 🛠 Tecnologias
 
 ### ✅ Testes
-Para rodar os testes, utilize o comando abaixo:
-
-
-### 🔗 Links
-
- 
+Foram desenvolvidos testes unitários para os services e integrados para os controllers. Você pode executar diretamente através da sua IDE.
+![image](https://user-images.githubusercontent.com/29411848/183432480-7a1f5e09-9fce-45d3-ac4b-c5f9bb59b314.png)
