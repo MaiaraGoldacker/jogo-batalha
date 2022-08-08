@@ -1,0 +1,33 @@
+spring:
+  web:
+    locale: pt_BR
+    locale-resolver: fixed
+  profiles:
+    active: local
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=lps-tier
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+        hibernate:
+          default_schema: lps-tier
+  flyway:
+    baseline-on-migrate: true
+    clean-on-validation-error: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+jogo:
+  config:
+    valor-maximo-erros: ${VALOR-MAXIMO-ERROS:3}
+    quantidade-filmes-por-round: ${QUANTIDADE-FILMES-POR-ROUND:2}
+  
