@@ -65,7 +65,7 @@ A documentação da API é feita através do swagger, e quando a aplicação est
 
   - cada partida se encerrará quando o jogador alcançar um número maximo de erros. Esse número pode ser setado através da variável de ambiente VALOR-MAXIMO-ERROS, que  é inicializada com o default de 3;
   - cada novo round haverá opções de filmes, e o jogador terá de escolher entre eles qual possui a maior pontuação. A quantidade de filmes por round pode ser mudada através da variável de ambiente QUANTIDADE-FILMES-POR-ROUND, que  é inicializada com o default de 2;
-  -O jogador pode deslogar ou sair do jogo a qualquer momento, mas quando ele voltar, a mesma partida e round(se houver um round que não foi respondido) será resgatado;
+  - O jogador pode deslogar ou sair do jogo a qualquer momento, mas quando ele voltar, a mesma partida e round(se houver um round que não foi respondido) será resgatado;
 
 ### 🎲 Iniciando um novo jogo
 1 -Para jogar, é necessário adicionar um novo usuário através do endpoint POST /usuarios, informando no body um usuário e senha
