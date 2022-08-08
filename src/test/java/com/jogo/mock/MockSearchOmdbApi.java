@@ -1,12 +1,10 @@
 package com.jogo.mock;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.jogo.response.SearchOmdbApiSimple;
-import com.jogo.model.Partida;
 import com.jogo.response.SearchOmdbApiSimple.OmdbApiSimple;
 import com.jogo.response.SearchOmdbApiSimple.SearchOmdbApiFull;
 

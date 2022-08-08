@@ -13,17 +13,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.jogo.client.OmdbApi;
 import com.jogo.exception.EntidadeNaoEncontradaException;
-import com.jogo.exception.EntidadeNaoProcessavelException;
 import com.jogo.mock.MockFilmeRound;
-import com.jogo.mock.MockPartida;
 import com.jogo.mock.MockRound;
 import com.jogo.mock.MockSearchOmdbApi;
 import com.jogo.mock.MockUsuario;
 import com.jogo.repository.FilmeRoundRepository;
-import com.jogo.repository.PartidaRepository;
 import com.jogo.repository.RoundRepository;
 import com.jogo.service.impl.FilmeRoundServiceImpl;
-import com.jogo.service.impl.PartidaServiceImpl;
 import com.jogo.utils.RoundUtils;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,15 +1,11 @@
 package com.jogo.controller;
 
 import static com.github.jenspiegsa.wiremockextension.ManagedWireMockServer.with;
-import static com.github.tomakehurst.wiremock.client.WireMock.badRequest;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,14 +29,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import com.jogo.request.EscolhaRequest;
 import com.jogo.request.UsuarioRequest;
 import com.jogo.response.SearchOmdbApiSimple.SearchOmdbApiFull;
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.jenspiegsa.wiremockextension.Managed;
-import com.github.jenspiegsa.wiremockextension.WireMockExtension;
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import com.github.jenspiegsa.wiremockextension.Managed;
-import static com.github.jenspiegsa.wiremockextension.ManagedWireMockServer.with;
 
 @ActiveProfiles(profiles = "test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -56,7 +45,6 @@ public class RoundControllerIT {
 	
     @Autowired
     private ObjectMapper mapper;
-    
     
 	@Managed
 	WireMockServer wireMockServer = with(wireMockConfig().port(9876));

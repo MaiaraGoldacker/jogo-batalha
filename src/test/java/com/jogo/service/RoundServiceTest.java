@@ -2,7 +2,6 @@ package com.jogo.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -14,22 +13,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
-
 import com.jogo.mapper.FilmeRoundMapper;
 import com.jogo.mock.MockFilmeRound;
 import com.jogo.mock.MockPartida;
 import com.jogo.mock.MockRound;
 import com.jogo.mock.MockUsuario;
 import com.jogo.repository.FilmeRoundRepository;
-import com.jogo.repository.PartidaRepository;
 import com.jogo.repository.RoundRepository;
-import com.jogo.repository.UsuarioRepository;
 import com.jogo.request.EscolhaRequest;
 import com.jogo.response.RoundResponse;
-import com.jogo.service.impl.DetalheUsuarioServiceImpl;
 import com.jogo.service.impl.RoundServiceImpl;
 
 @ExtendWith(MockitoExtension.class)

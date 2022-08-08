@@ -20,50 +20,48 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-	@Configuration
-	@EnableSwagger2
-	public class SwaggerConfig {
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
 		
-		 public static final String AUTHORIZATION_HEADER = "Authorization";
+	public static final String AUTHORIZATION_HEADER = "Authorization";
 
-		private ApiInfo apiInfo() {
-	        return new ApiInfo("MyApp Rest APIs",
-	                "APIs for MyApp.",
-	                "1.0",
-	                "Terms of service",
-	                new Contact("Maiara Goldacker", "https://github.com/maiaragoldacker", "maiaragoldacker@gmail.com"),
-	                "License of API",
-	                "API license URL", Collections.emptyList());
-	    }
+	private ApiInfo apiInfo() {
+		return new ApiInfo("Batalha de Filmes",
+				"Jogo de batalha de filmes",
+				"1.0",
+				"Terms of service",
+				new Contact("Maiara Goldacker", "https://github.com/maiaragoldacker", "maiaragoldacker@gmail.com"),
+				"License of API",
+				"API license URL", Collections.emptyList());
+	}
 		
-		  @Bean
-		    public Docket api() {
-		        return new Docket(DocumentationType.OAS_30)
-		                .apiInfo(apiInfo())
-		                .securityContexts(Arrays.asList(securityContext()))
-		                .securitySchemes(Arrays.asList(apiKey()))
-		                .select()
-		                .apis(RequestHandlerSelectors.basePackage("com.jogo.controller"))
-		                //.apis(RequestHandlerSelectors.any())
-		                .paths(PathSelectors.any())
-		                .build();
-		    }
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.OAS_30)
+				.apiInfo(apiInfo())
+				.securityContexts(Arrays.asList(securityContext()))
+				.securitySchemes(Arrays.asList(apiKey()))
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.jogo.controller"))
+				.paths(PathSelectors.any())
+				.build();
+	}
 
-		    private ApiKey apiKey() {
-		        return new ApiKey(AUTHORIZATION_HEADER, "JWT", "header");
-		    }
+	private ApiKey apiKey() {
+		return new ApiKey(AUTHORIZATION_HEADER, "JWT", "header");
+	}
 
-		    private SecurityContext securityContext() {
-		        return SecurityContext.builder()
-		                .securityReferences(defaultAuth())
-		                .build();
-		    }
+	private SecurityContext securityContext() {
+		return SecurityContext.builder()
+				.securityReferences(defaultAuth())
+				.build();
+	}
 		    
-		    List<SecurityReference> defaultAuth() {
-		        AuthorizationScope authorizationScope
-		                = new AuthorizationScope("global", "accessEverything");
-		        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-		        authorizationScopes[0] = authorizationScope;
-		        return Arrays.asList(new SecurityReference(AUTHORIZATION_HEADER, authorizationScopes));
-		    }
+	List<SecurityReference> defaultAuth() {
+		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+		authorizationScopes[0] = authorizationScope;
+		return Arrays.asList(new SecurityReference(AUTHORIZATION_HEADER, authorizationScopes));
+	}
 }

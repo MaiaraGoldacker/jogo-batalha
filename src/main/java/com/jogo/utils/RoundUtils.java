@@ -36,8 +36,7 @@ public class RoundUtils {
 		lista.add("he");
 		lista.add("her");
 		lista.add("shirt");
-		lista.add("police");
-	    System.out.println("Código executado logo após a aplicação ser startada");
+		lista.add("police");		
 	}
 	
 	public SearchOmdbApiSimple listaGenericaDeFilmes() {
