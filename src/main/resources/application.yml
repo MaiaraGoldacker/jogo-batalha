@@ -6,7 +6,7 @@ spring:
     active: local
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=lps-tier
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=jogo
     username: postgres
     password: postgres
   jpa:
@@ -18,7 +18,7 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       properties:
         hibernate:
-          default_schema: lps-tier
+          default_schema: jogo
   flyway:
     baseline-on-migrate: true
     clean-on-validation-error: true

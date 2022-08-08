@@ -52,7 +52,7 @@ public class RoundUtils {
 		do {
 			searchOmdbApiSimple = retornaListaGeralDeFilmesServicoExterno();
 		} while (Objects.isNull(searchOmdbApiSimple) ||
-					Objects.isNull(searchOmdbApiSimple.getSearch()) &&
+					Objects.isNull(searchOmdbApiSimple.getSearch()) ||
 						searchOmdbApiSimple.getSearch().size() == 0) ;
 
 		return searchOmdbApiSimple;

@@ -19,7 +19,7 @@ public class PostgresContainer extends PostgreSQLContainer<PostgresContainer> {
     @Override
     public void start() {
         super.start();
-        System.setProperty("jdbc:postgresql://localhost:5432/postgres?currentSchema=lps-tier", container.getJdbcUrl());
+        System.setProperty("jdbc:postgresql://localhost:5432/postgres?currentSchema=jogo", container.getJdbcUrl());
         System.setProperty("postgres", container.getUsername());
         System.setProperty("postgres", container.getPassword());
     }

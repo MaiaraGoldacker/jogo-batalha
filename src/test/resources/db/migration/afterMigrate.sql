@@ -10,21 +10,17 @@ INSERT INTO partida
 (data_inicio_partida, data_fim_partida, id_usuario)
 VALUES(now(), null, 101);
 
-
 insert into usuario 
 (id, usuario, senha) 
 values (102, 'katy', '$2a$10$e0nJMXbHS9Jjf7tvVDCVpeoZHjo4F/raiYVSVkkymhPFvwrA2kmzi');
-
 
 INSERT INTO partida
 (id, data_inicio_partida, data_fim_partida, id_usuario)
 VALUES(100, now(), null, 102);
 
-INSERT INTO "lps-tier".round
+INSERT INTO round
 (id, is_acertou, id_partida)
 VALUES(100, null, 100);
-
-
 
 INSERT INTO filme_round
 (id, id_imdb, pontuacao, id_roud, titulo)
