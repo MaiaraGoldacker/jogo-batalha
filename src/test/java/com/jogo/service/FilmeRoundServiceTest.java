@@ -5,11 +5,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import com.jogo.client.OmdbApi;
 import com.jogo.exception.EntidadeNaoEncontradaException;
@@ -39,13 +41,18 @@ public class FilmeRoundServiceTest {
 	
 	@Mock
 	private RoundRepository roundRepository;
+	
+	@BeforeEach
+	void setUp() {
+		ReflectionTestUtils.setField(roundUtils, "externalAccessKeyOmdbApi", "8fa53dcb");	
+	}
 
 	@Test
-	public void pegaNovoFilmeParaRoundComSucessoTest() {
+	public void pegaNovoFilmeParaRoundComSucessoTest() throws Exception {
 
-		when(filmeRoundRepository.jaUtilizouOImdbNoRoundAtual(any(), any())).thenReturn(false);
-		when(omdbApi.getEspecificoFilme(any(), any())).thenReturn(MockSearchOmdbApi.buildSearchOmdbApiFull());
+		when(filmeRoundRepository.jaUtilizouOImdbNoRoundAtual(any(), any())).thenReturn(false);		
 		when(roundUtils.listaGenericaDeFilmes()).thenReturn(MockSearchOmdbApi.buildSearchOmdbApiSimple());
+		when(roundUtils.retornaFilmeEspecificoServicoExterno(any())).thenReturn(MockSearchOmdbApi.buildSearchOmdbApiFull());
 		
 		when(filmeRoundRepository.save(any())).thenReturn(MockFilmeRound.buildFilmeRound());
 		

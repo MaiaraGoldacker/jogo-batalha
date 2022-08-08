@@ -30,4 +30,4 @@ jogo:
   config:
     valor-maximo-erros: ${VALOR-MAXIMO-ERROS:3}
     quantidade-filmes-por-round: ${QUANTIDADE-FILMES-POR-ROUND:2}
-  
+    external_access_key_omdb_api: ${EXTERNAL_ACCESS_KEY_OMDB_API:8fa53dcb}

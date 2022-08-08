@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.jogo.client.OmdbApi;
 import com.jogo.exception.EntidadeNaoEncontradaException;
 import com.jogo.model.FilmeRound;
 import com.jogo.model.Round;
@@ -17,15 +16,13 @@ import com.jogo.model.Usuario;
 import com.jogo.repository.FilmeRoundRepository;
 import com.jogo.repository.RoundRepository;
 import com.jogo.response.SearchOmdbApiSimple;
+import com.jogo.response.SearchOmdbApiSimple.OmdbApiSimple;
 import com.jogo.response.SearchOmdbApiSimple.SearchOmdbApiFull;
 import com.jogo.service.FilmeRoundService;
 import com.jogo.utils.RoundUtils;
 
 @Service
 public class FilmeRoundServiceImpl implements FilmeRoundService {
-	
-	@Autowired
-	private OmdbApi omdbApi;
 	
 	@Autowired
 	private RoundUtils roundUtils;
@@ -38,26 +35,25 @@ public class FilmeRoundServiceImpl implements FilmeRoundService {
 
 	@Override
 	@Transactional
-	public FilmeRound pegaNovoFilmeParaRound(Round round, Usuario usuario) {
+	public FilmeRound pegaNovoFilmeParaRound(Round round, Usuario usuario) throws Exception {
 		var searchOmdbApiFull = verificaSeFilmeJaFoiUtilizadoNaPartida(roundUtils.listaGenericaDeFilmes(), usuario);
 
 		return createFilmeRound(searchOmdbApiFull, round);
 	}
 	
-	private SearchOmdbApiFull verificaSeFilmeJaFoiUtilizadoNaPartida(SearchOmdbApiSimple listaDesafio, Usuario usuario) {
+	private SearchOmdbApiFull verificaSeFilmeJaFoiUtilizadoNaPartida(SearchOmdbApiSimple listaDesafio, Usuario usuario) throws Exception {
 		
-		Integer index = 0;
-		Boolean ehOFilme = false;
-		String imdbID = "";
-		do {
-			imdbID = listaDesafio.getSearch().get(index).getImdbID();
-			ehOFilme = filmeRoundRepository.jaUtilizouOImdbNoRoundAtual(usuario.getId(), imdbID);
-			index ++;
-		} while(ehOFilme);
+		Integer tamanhoDaLista = listaDesafio.getSearch().size();		
+		OmdbApiSimple omdbApiSimple = null;
+		do {	
+			omdbApiSimple =  listaDesafio.getSearch()
+					.get(RoundUtils.getRandomIndiceParaLista(tamanhoDaLista));
+		} while(Objects.nonNull(omdbApiSimple) && 
+				filmeRoundRepository.jaUtilizouOImdbNoRoundAtual(usuario.getId(), omdbApiSimple.getImdbID()));
 		
-		return  omdbApi.getEspecificoFilme(imdbID, "8fa53dcb");
+		return roundUtils.retornaFilmeEspecificoServicoExterno(omdbApiSimple.getImdbID());
 	}
-	
+
 	private FilmeRound createFilmeRound(SearchOmdbApiFull searchOmdbApiFull, Round round) {
 		
 		var filmeRound = FilmeRound.builder().idImdb(searchOmdbApiFull.getImdbID())

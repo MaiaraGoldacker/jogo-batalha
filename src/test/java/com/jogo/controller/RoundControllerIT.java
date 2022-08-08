@@ -49,10 +49,12 @@ public class RoundControllerIT {
     
 	@Managed
 	WireMockServer wireMockServer = with(wireMockConfig().port(9876));
+	
+	private static final String  EXTERNAL_ACCESS_KEY_OMDB_API = "8fa53dcb";
 
 	@BeforeEach
 	void setup() throws JsonProcessingException {		
-		wireMockServer.stubFor(WireMock.put("/?apikey=8fa53dcb").willReturn(
+		wireMockServer.stubFor(WireMock.get("/?apikey=".concat(EXTERNAL_ACCESS_KEY_OMDB_API)).willReturn(
 				okJson(mapper.writeValueAsString(SearchOmdbApiFull.builder().build()))));
 	}	
     

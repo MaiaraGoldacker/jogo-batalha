@@ -21,12 +21,12 @@ public class MockSearchOmdbApi {
 	public static SearchOmdbApiSimple buildSearchOmdbApiSimple() {
 		
 		List<OmdbApiSimple> lista = new ArrayList<>();
-		lista.add(OmdbApiSimple.builder().imdbID("111").Title("111").build());
-		lista.add(OmdbApiSimple.builder().imdbID("222").Title("222").build());
-		lista.add(OmdbApiSimple.builder().imdbID("333").Title("333").build());
-		lista.add(OmdbApiSimple.builder().imdbID("444").Title("444").build());
-		lista.add(OmdbApiSimple.builder().imdbID("555").Title("555").build());
-		lista.add(OmdbApiSimple.builder().imdbID("666").Title("666").build());
+		lista.add(OmdbApiSimple.builder().imdbID("111").title("111").build());
+		lista.add(OmdbApiSimple.builder().imdbID("222").title("222").build());
+		lista.add(OmdbApiSimple.builder().imdbID("333").title("333").build());
+		lista.add(OmdbApiSimple.builder().imdbID("444").title("444").build());
+		lista.add(OmdbApiSimple.builder().imdbID("555").title("555").build());
+		lista.add(OmdbApiSimple.builder().imdbID("666").title("666").build());
 		return SearchOmdbApiSimple.builder().Search(lista).build();
 	}
 }

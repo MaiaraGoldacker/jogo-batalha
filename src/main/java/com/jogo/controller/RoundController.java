@@ -28,7 +28,7 @@ private final RoundService roundService;
 	
 	@ApiOperation(value = "Pega os filmes para o Round atual")
 	@GetMapping
-	public ResponseEntity<List<RoundResponse>> pegaOpcoesFilmesRound(@RequestHeader String usuario) {
+	public ResponseEntity<List<RoundResponse>> pegaOpcoesFilmesRound(@RequestHeader String usuario) throws Exception{
 		return ResponseEntity.ok(roundService.retornaRound(usuario));
 	}
 	

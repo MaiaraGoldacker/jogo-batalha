@@ -56,7 +56,7 @@ public class RoundServiceTest {
 	}
 
 	@Test
-	public void retornaRoundResgatadoComSucessoTest() {
+	public void retornaRoundResgatadoComSucessoTest() throws Exception {
 		when(usuarioService.buscaUsuario(any())).thenReturn(MockUsuario.buildUsuario());
 
 		when(filmeRoundService.pegaFilmesDeRoundEmAberto(any())).thenReturn(MockFilmeRound.buildListaFilmeRound());
@@ -68,7 +68,7 @@ public class RoundServiceTest {
 	}
 	
 	@Test
-	public void retornaNovoRoundComSucessoTest() {
+	public void retornaNovoRoundComSucessoTest() throws Exception {
 		when(usuarioService.buscaUsuario(any())).thenReturn(MockUsuario.buildUsuario());
 		when(partidaService.pegaPartidaAtual(any())).thenReturn(MockPartida.buildPartida());
 		when(filmeRoundService.pegaFilmesDeRoundEmAberto(any())).thenReturn(new ArrayList<>());

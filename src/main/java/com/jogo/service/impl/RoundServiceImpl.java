@@ -5,6 +5,8 @@ import com.jogo.mapper.FilmeRoundMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
+
 import com.jogo.model.FilmeRound;
 import com.jogo.model.Round;
 import com.jogo.model.Usuario;
@@ -45,7 +47,8 @@ public class RoundServiceImpl implements RoundService {
 	private Integer quantidadeDeFilmesPorRound;
 	
 	@Override
-	public List<RoundResponse> retornaRound(String usuario) {
+	@Transactional
+	public List<RoundResponse> retornaRound(String usuario) throws Exception {
 		
 		var usuarioEncontrado = usuarioService.buscaUsuario(usuario);
 		
@@ -83,7 +86,7 @@ public class RoundServiceImpl implements RoundService {
 		return roundRepository.save(round);
 	}
 
-	private List<FilmeRound> pegaFilmesParaNovoRound(List<FilmeRound> listaDeFilmes, Usuario usuario) {
+	private List<FilmeRound> pegaFilmesParaNovoRound(List<FilmeRound> listaDeFilmes, Usuario usuario) throws Exception {
 		
 		Round round = salvaRound(Round.builder().partida(partidaService.pegaPartidaAtual(usuario.getUsuario())).build());		
 		

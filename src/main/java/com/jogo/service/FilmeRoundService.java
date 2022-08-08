@@ -8,7 +8,7 @@ import com.jogo.model.Usuario;
 
 public interface FilmeRoundService {
 
-	FilmeRound pegaNovoFilmeParaRound(Round round, Usuario usuario);
+	FilmeRound pegaNovoFilmeParaRound(Round round, Usuario usuario) throws Exception;
 	
 	FilmeRound  buscaFilmeRoundPorId(Long idFilmeRound, Usuario usuario);
 	

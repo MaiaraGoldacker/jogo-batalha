@@ -30,7 +30,7 @@ public class SearchOmdbApiSimple {
 		private String imdbID;
 		
 		@JsonProperty("Title")
-		private String Title;
+		private String title;
 	}
 	
 	@Builder
