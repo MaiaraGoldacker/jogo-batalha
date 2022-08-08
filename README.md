@@ -52,13 +52,19 @@ O projeto baixará as dependências necessárias e buildará com sucesso. Caso n
 #### Configurar o DB Postgres localmente com o Docker
 Com o terminal dentro do diretório do projeto, executar o docker-compose abaixo
 ```sh
-sudo docker-compose up -d
+docker-compose up
 ```
 
-Conectar-se ao DB com o manager de sua preferência. O usuário e senha do DB se encontram dentro do arquivo docker-compose.
+Conectar-se ao DB com o manager de sua preferência. O usuário e senha do DB podem ser consultados no arquivo application.yml
 
 #### Documentação da API
 A documentação da API é feita através do swagger, e quando a aplicação estiver rodando em ambiente local você pode acessá-la pelo [link](http://localhost:8080/swagger-ui/index.html#/)
+
+### 🎲 Iniciando um novo jogo
+Para jogar, é necessário adicionar um novo usuário através do endpoint /usuarios, informando no body um usuário e senha:
+![image](https://user-images.githubusercontent.com/29411848/183426414-957e5c81-09fb-484c-bc38-7999ddc78a5b.png)
+
+
 
 ### 🛠 Tecnologias
 
